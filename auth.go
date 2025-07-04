@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/base64"
+	"fmt"
 	"net/http"
 	"strings"
 )
@@ -36,6 +37,7 @@ func CheckAuth(r *http.Request) bool {
 	if len(creds) != 2 {
 		return false
 	}
+	fmt.Println("验证用户名和密码", creds[0] == GlobalConfig.AuthUser && creds[1] == GlobalConfig.AuthPass)
 
 	// 验证用户名和密码
 	return creds[0] == GlobalConfig.AuthUser && creds[1] == GlobalConfig.AuthPass
